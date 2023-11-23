@@ -90,6 +90,7 @@ function attackPlayerTwo() {
     // and player 1 attack button to active using DOM manipulation
     // this also DISABLES the button, meaning they are not interactable
     function changeButtonStatus() {
+        // i had to change this so that the right button was activating
         let playerTwoAttackButton = document.getElementById("playerOneAttack");
         playerTwoAttackButton.disabled = true;
         playerTwoAttackButton.classList.add("inactive");
@@ -173,6 +174,7 @@ function attackPlayerOne() {
         playerOneAttackButton.classList.add("inactive");
         playerOneAttackButton.classList.remove("active");
 
+
         let playerTwoAttackButton = document.getElementById("playerOneAttack");
         playerTwoAttackButton.disabled = false;
         playerTwoAttackButton.classList.add("active");
@@ -189,17 +191,22 @@ function attackPlayerOne() {
         //accessing playerTwoSprite element in HTML to be able to add animation
         let playerSprite = document.getElementById("playerTwoSprite");
         playerSprite.src = playerTwoFrames[1];
+        //now that playerTwo is attacking, i want to make sure that the attacking image is working
         playerSprite.classList.remove("idle");
         playerSprite.classList.add("attack");
 
+        //getting enemySprite
         let enemySprite = document.getElementById("playerOneSprite");
         let enemyDamage = document.getElementById("SFX_PlayerDamage");
 
+        //this code will cause player One is receiving damage
+        //removing idle
         enemySprite.classList.remove("idle");
         enemySprite.classList.add("damage");
-
+        //enemy damage sound will play
         enemyDamage.play()
 
+        //this method will happen after 350 milliseconds per setTimeOut
         function changePlayerTwoSprite() {
             enemySprite.classList.remove("damage");
             enemySprite.classList.add("idle");
