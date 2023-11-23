@@ -25,6 +25,8 @@ function changePlayer() {
         if (playerTwoHealthNum <= 0) {
             // ensures health does not dig into the negative
             playerTwoHealthNum = 0;
+            //updating html so that it displays 0 instead of negative number
+            playerTwoHealth.innerHTML = playerTwoHealthNum;
             // ends the game
             gameOver();
         }
@@ -53,6 +55,8 @@ function changePlayer() {
             //so if health less than 0, new variable will set health level @ 0 so it doesnt go into negative
             playerOneHealthNum = 0;
             //when health at 0, game is over
+            //updating innerHTML to display 0
+            playerOneHealth.innerHTML = playerOneHealthNum;
             gameOver();
         } else {
             //so if health is not at 0, game continues and switches player
